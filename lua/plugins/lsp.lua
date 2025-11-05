@@ -17,4 +17,5 @@ return {
       automatic_installation = true,
     },
   },
+  { "neovim/nvim-lspconfig" },
 }
