@@ -15,6 +15,11 @@ return {
     local telescope = require("telescope")
     telescope.setup({
       defaults = {
+        pickers = {
+          find_files = {
+            hidden = true
+          }
+        },
         file_ignore_patterns = { "node_modules", ".git", "dist", "build", "coverage", "target" },
         layout_strategy = "vertical",
         layout_config = { height = 0.95 },

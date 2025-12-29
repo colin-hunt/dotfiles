@@ -23,3 +23,9 @@ vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)        -- show diagno
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)         -- already built-in but override to silent
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts) -- list diagnostics
+
+-- Tree-sitter
+vim.keymap.set("n", "<leader>z", "za", { desc = "Toggle fold" })
+vim.keymap.set("n", "<leader>zo", "zR", { desc = "Open all folds" })
+vim.keymap.set("n", "<leader>zc", "zM", { desc = "Close all folds" })
+
