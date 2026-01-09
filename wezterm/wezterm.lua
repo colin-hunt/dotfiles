@@ -14,6 +14,32 @@ config.initial_rows = 58
 config.font_size = 14
 config.color_scheme = 'AdventureTime'
 
+-- Tab rearrangement keybindings
+config.keys = {
+  -- Move tab left/right with Cmd+Shift+Arrow
+  {
+    key = 'LeftArrow',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.MoveTabRelative(-1),
+  },
+  {
+    key = 'RightArrow',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.MoveTabRelative(1),
+  },
+  -- Navigate tabs (Chrome-style)
+  {
+    key = ']',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.ActivateTabRelative(1),
+  },
+  {
+    key = '[',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.ActivateTabRelative(-1),
+  },
+}
+
 -- Finally, return the configuration to wezterm:
 return config
 
