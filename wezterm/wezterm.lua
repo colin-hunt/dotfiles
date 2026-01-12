@@ -14,9 +14,64 @@ config.initial_rows = 58
 config.font_size = 14
 config.color_scheme = 'AdventureTime'
 
--- Tab rearrangement keybindings
 config.keys = {
-  -- Move tab left/right with Cmd+Shift+Arrow
+  -- ===================
+  -- PANE MANAGEMENT
+  -- ===================
+  -- Split panes (Cmd+Ctrl+Arrow represents direction)
+  {
+    key = 'RightArrow',
+    mods = 'CMD|CTRL',
+    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+  },
+  {
+    key = 'DownArrow',
+    mods = 'CMD|CTRL',
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+  },
+  -- Navigate panes (Cmd+Option+Arrow)
+  {
+    key = 'LeftArrow',
+    mods = 'CMD|OPT',
+    action = wezterm.action.ActivatePaneDirection 'Left',
+  },
+  {
+    key = 'RightArrow',
+    mods = 'CMD|OPT',
+    action = wezterm.action.ActivatePaneDirection 'Right',
+  },
+  {
+    key = 'UpArrow',
+    mods = 'CMD|OPT',
+    action = wezterm.action.ActivatePaneDirection 'Up',
+  },
+  {
+    key = 'DownArrow',
+    mods = 'CMD|OPT',
+    action = wezterm.action.ActivatePaneDirection 'Down',
+  },
+  -- Rotate panes (Cmd+Option+r/R)
+  {
+    key = 'r',
+    mods = 'CMD|OPT',
+    action = wezterm.action.RotatePanes 'Clockwise',
+  },
+  {
+    key = 'r',
+    mods = 'CMD|OPT|SHIFT',
+    action = wezterm.action.RotatePanes 'CounterClockwise',
+  },
+  -- Close pane (Cmd+W)
+  {
+    key = 'w',
+    mods = 'CMD',
+    action = wezterm.action.CloseCurrentPane { confirm = true },
+  },
+
+  -- ===================
+  -- TAB MANAGEMENT
+  -- ===================
+  -- Move tab left/right (Cmd+Shift+Arrow)
   {
     key = 'LeftArrow',
     mods = 'CMD|SHIFT',
@@ -27,7 +82,7 @@ config.keys = {
     mods = 'CMD|SHIFT',
     action = wezterm.action.MoveTabRelative(1),
   },
-  -- Navigate tabs (Chrome-style)
+  -- Navigate tabs (Cmd+Shift+[/])
   {
     key = ']',
     mods = 'CMD|SHIFT',
@@ -37,6 +92,12 @@ config.keys = {
     key = '[',
     mods = 'CMD|SHIFT',
     action = wezterm.action.ActivateTabRelative(-1),
+  },
+  -- Close tab (Cmd+Shift+W)
+  {
+    key = 'w',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.CloseCurrentTab { confirm = true },
   },
 }
 
