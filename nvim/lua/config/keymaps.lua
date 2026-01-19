@@ -7,6 +7,7 @@ vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>")
 vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>")
 vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>")
 vim.keymap.set("n", "//", "<cmd>Telescope current_buffer_fuzzy_find<CR>")
+vim.keymap.set("n", "<leader>fe", "<cmd>Telescope file_browser path=%:p:h select_buffer=true sorting_strategy=ascending<CR>")
 
 -- Clipboard
 vim.opt.clipboard = "unnamedplus"
@@ -28,7 +29,7 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts) -- list diagnostics
 
 -- Tree-sitter
-vim.keymap.set("n", "<leader>z", "za", { desc = "Toggle fold" })
+vim.keymap.set("n", "<Tab>", "za", { desc = "Toggle fold" })
 vim.keymap.set("n", "<leader>zo", "zR", { desc = "Open all folds" })
 vim.keymap.set("n", "<leader>zc", "zM", { desc = "Close all folds" })
 

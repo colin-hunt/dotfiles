@@ -10,6 +10,7 @@ return {
         return vim.fn.executable("make") == 1 or vim.fn.executable("cmake") == 1
       end,
     },
+    "nvim-telescope/telescope-file-browser.nvim",
   },
   config = function()
     local telescope = require("telescope")
@@ -26,6 +27,7 @@ return {
       },
     })
     pcall(telescope.load_extension, "fzf")
+    pcall(telescope.load_extension, "file_browser")
   end,
 }
 
