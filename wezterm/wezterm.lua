@@ -14,6 +14,23 @@ config.initial_rows = 58
 config.font_size = 14
 config.color_scheme = 'AdventureTime'
 
+-- Mouse bindings
+config.mouse_bindings = {
+  -- Right-click: copy if text selected, otherwise paste
+  {
+    event = { Down = { streak = 1, button = 'Right' } },
+    mods = 'NONE',
+    action = wezterm.action_callback(function(window, pane)
+      local has_selection = window:get_selection_text_for_pane(pane) ~= ''
+      if has_selection then
+        window:perform_action(wezterm.action.CopyTo 'ClipboardAndPrimarySelection', pane)
+      else
+        window:perform_action(wezterm.action.PasteFrom 'Clipboard', pane)
+      end
+    end),
+  },
+}
+
 config.keys = {
   -- ===================
   -- PANE MANAGEMENT
