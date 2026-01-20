@@ -78,6 +78,27 @@ config.keys = {
     mods = 'CMD|OPT|SHIFT',
     action = wezterm.action.RotatePanes 'CounterClockwise',
   },
+  -- Resize panes (Cmd+Option+Shift+Arrow)
+  {
+    key = 'LeftArrow',
+    mods = 'CMD|OPT|SHIFT',
+    action = wezterm.action.AdjustPaneSize { 'Left', 5 },
+  },
+  {
+    key = 'RightArrow',
+    mods = 'CMD|OPT|SHIFT',
+    action = wezterm.action.AdjustPaneSize { 'Right', 5 },
+  },
+  {
+    key = 'UpArrow',
+    mods = 'CMD|OPT|SHIFT',
+    action = wezterm.action.AdjustPaneSize { 'Up', 5 },
+  },
+  {
+    key = 'DownArrow',
+    mods = 'CMD|OPT|SHIFT',
+    action = wezterm.action.AdjustPaneSize { 'Down', 5 },
+  },
   -- Close pane (Cmd+W)
   {
     key = 'w',
