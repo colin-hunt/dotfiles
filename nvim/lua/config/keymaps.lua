@@ -8,6 +8,7 @@ vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>")
 vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>")
 vim.keymap.set("n", "//", "<cmd>Telescope current_buffer_fuzzy_find<CR>")
 vim.keymap.set("n", "<leader>fe", "<cmd>Telescope file_browser path=%:p:h select_buffer=true sorting_strategy=ascending<CR>")
+vim.keymap.set("n", "<leader>fE", "<cmd>Telescope file_browser path=%:p:h select_buffer=true sorting_strategy=ascending hidden=true<CR>")
 
 -- Clipboard
 vim.opt.clipboard = "unnamedplus"
