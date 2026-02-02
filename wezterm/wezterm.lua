@@ -31,7 +31,57 @@ config.mouse_bindings = {
   },
 }
 
+-- Search mode keybindings
+config.key_tables = {
+  search_mode = {
+    -- Keep default search mode bindings
+    { key = 'Enter', mods = 'NONE', action = wezterm.action.CopyMode 'NextMatch' },
+    { key = 'Enter', mods = 'SHIFT', action = wezterm.action.CopyMode 'PriorMatch' },
+    { key = 'Escape', mods = 'NONE', action = wezterm.action.CopyMode 'Close' },
+    { key = 'n', mods = 'CTRL', action = wezterm.action.CopyMode 'NextMatch' },
+    { key = 'p', mods = 'CTRL', action = wezterm.action.CopyMode 'PriorMatch' },
+    { key = 'r', mods = 'CTRL', action = wezterm.action.CopyMode 'CycleMatchType' },
+    { key = 'u', mods = 'CTRL', action = wezterm.action.CopyMode 'ClearPattern' },
+    { key = 'k', mods = 'CMD', action = wezterm.action.CopyMode 'ClearPattern' },
+  },
+}
+
 config.keys = {
+  -- Reload config
+  {
+    key = 'r',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.ReloadConfiguration,
+  },
+
+  -- ===================
+  -- SEARCH
+  -- ===================
+  -- Case-insensitive search by default
+  {
+    key = 'f',
+    mods = 'CMD',
+    action = wezterm.action.Search { CaseInSensitiveString = '' },
+  },
+  -- Fuzzy search scrollback with fzf (copies selection to clipboard)
+  {
+    key = 'f',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action_callback(function(window, pane)
+      local scrollback = pane:get_lines_as_text(pane:get_dimensions().scrollback_rows)
+      local tmp = os.tmpname()
+      local f = io.open(tmp, 'w')
+      f:write(scrollback)
+      f:close()
+      window:perform_action(
+        wezterm.action.SpawnCommandInNewTab {
+          args = { '/bin/zsh', '-l', '-c', 'cat ' .. tmp .. ' | fzf --tac --no-sort --height=100% | pbcopy; rm ' .. tmp },
+        },
+        pane
+      )
+    end),
+  },
+
   -- ===================
   -- PANE MANAGEMENT
   -- ===================

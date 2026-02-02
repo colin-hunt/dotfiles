@@ -29,6 +29,12 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)         -- already bui
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts) -- list diagnostics
 
+-- Window navigation
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to upper window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
+
 -- Tree-sitter
 vim.keymap.set("n", "<Tab>", "za", { desc = "Toggle fold" })
 vim.keymap.set("n", "<leader>zo", "zR", { desc = "Open all folds" })
