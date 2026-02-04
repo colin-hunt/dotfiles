@@ -11,7 +11,7 @@ config.initial_cols = 144
 config.initial_rows = 58
 
 -- or, changing the font size and color scheme.
-config.font_size = 14
+config.font_size = 13
 config.color_scheme = 'AdventureTime'
 
 -- Mouse bindings
@@ -186,6 +186,19 @@ config.keys = {
     key = 'w',
     mods = 'CMD|SHIFT',
     action = wezterm.action.CloseCurrentTab { confirm = true },
+  },
+  -- Rename tab (Cmd+Shift+E)
+  {
+    key = 'e',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.PromptInputLine {
+      description = 'Enter new tab name:',
+      action = wezterm.action_callback(function(window, pane, line)
+        if line then
+          window:active_tab():set_title(line)
+        end
+      end),
+    },
   },
 }
 

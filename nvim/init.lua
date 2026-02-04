@@ -4,6 +4,7 @@ require("config.keymaps")
 -- UI
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.numberwidth = 1
 
 -- Tabs = 2 spaces
 vim.opt.tabstop = 2
