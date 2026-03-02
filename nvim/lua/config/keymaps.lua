@@ -35,6 +35,16 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to upper window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
 
+-- Buffers
+vim.keymap.set("n", "<leader>x", function()
+  local lib = package.loaded["diffview.lib"]
+  if lib and next(lib.views) then
+    vim.cmd("DiffviewClose")
+  else
+    vim.cmd("bd")
+  end
+end, { desc = "Close buffer / next diff file" })
+
 -- Tree-sitter
 vim.keymap.set("n", "<Tab>", "za", { desc = "Toggle fold" })
 vim.keymap.set("n", "<leader>zo", "zR", { desc = "Open all folds" })

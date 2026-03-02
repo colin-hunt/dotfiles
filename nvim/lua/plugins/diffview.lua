@@ -20,8 +20,16 @@ return {
     require("diffview").setup({
       view = {
         default = {
-          layout = "diff2_horizontal",
+          layout = "diff2_vertical",
         },
+      },
+      hooks = {
+        view_opened = function()
+          vim.opt.showtabline = 0
+        end,
+        view_closed = function()
+          vim.opt.showtabline = 2
+        end,
       },
     })
   end,
