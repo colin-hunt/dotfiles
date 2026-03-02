@@ -1,0 +1,95 @@
+# Ghostty configuration
+# Ported from WezTerm
+
+################################################################################
+# WINDOW
+################################################################################
+
+window-width = 144
+window-height = 58
+
+# Show tabs integrated into the macOS title bar area, no separate title bar
+# (matches WezTerm's window_decorations = 'RESIZE' + use_fancy_tab_bar = true)
+macos-titlebar-style = tabs
+
+################################################################################
+# FONT
+################################################################################
+
+font-size = 13
+
+################################################################################
+# COLORS / THEME
+################################################################################
+
+theme = Dark Pastel
+
+# NOTE: WezTerm had custom tab bar colors (bg #0d1117, active tab #232323, etc.)
+# Ghostty does not support per-tab-bar-element color overrides independent of
+# the terminal theme. The Argonaut theme governs the overall appearance.
+
+################################################################################
+# KEY BINDINGS
+################################################################################
+
+# Reload config (Cmd+Shift+R)
+keybind = super+shift+r=reload_config
+
+# Search (Cmd+F)
+# NOTE: Ghostty 1.2.3 does not have inline search (planned for 1.3.0).
+
+# Fuzzy fzf scrollback search (Cmd+Shift+F)
+# Pastes a temp file path containing scrollback into the terminal.
+# Pair with a shell alias/function to pipe into fzf, e.g.:
+#   fzf-scroll() { cat "$1" | fzf --tac --no-sort | pbcopy && rm "$1"; }
+# Then after pressing Cmd+Shift+F, type: fzf-scroll <paste><enter>
+keybind = super+shift+f=write_scrollback_file:paste
+
+# --- PANE MANAGEMENT ---
+
+# Split panes (Cmd+Ctrl+Arrow)
+keybind = super+ctrl+arrow_right=new_split:right
+keybind = super+ctrl+arrow_down=new_split:down
+
+# Navigate panes (Cmd+Opt+Arrow)
+keybind = super+alt+arrow_left=goto_split:left
+keybind = super+alt+arrow_right=goto_split:right
+keybind = super+alt+arrow_up=goto_split:up
+keybind = super+alt+arrow_down=goto_split:down
+
+# NOTE: Rotate panes (Cmd+Opt+R) - Ghostty has no built-in pane rotation action.
+
+# Resize panes (Cmd+Opt+Shift+Arrow)
+# Amount is in pixels (WezTerm used 5 cells; ~32px is a rough equivalent)
+keybind = super+alt+shift+arrow_left=resize_split:left,32
+keybind = super+alt+shift+arrow_right=resize_split:right,32
+keybind = super+alt+shift+arrow_up=resize_split:up,32
+keybind = super+alt+shift+arrow_down=resize_split:down,32
+
+# Close pane (Cmd+W)
+# NOTE: WezTerm prompted for confirmation; Ghostty closes immediately.
+keybind = super+w=close_surface
+
+# --- TAB MANAGEMENT ---
+
+# Move tab position (Cmd+Shift+Arrow)
+keybind = super+shift+arrow_left=move_tab:-1
+keybind = super+shift+arrow_right=move_tab:1
+
+# Navigate tabs (Cmd+Shift+[ / Cmd+Shift+])
+keybind = super+shift+bracket_right=next_tab
+keybind = super+shift+bracket_left=previous_tab
+
+# Close tab (Cmd+Shift+W)
+# NOTE: WezTerm prompted for confirmation; Ghostty closes immediately.
+keybind = super+shift+w=close_tab
+
+# Rename tab (Cmd+Shift+E)
+keybind = super+shift+e=prompt_surface_title
+
+################################################################################
+# MOUSE
+################################################################################
+
+# Right-click: copy if selection active, otherwise paste (matches WezTerm)
+right-click-action = copy-or-paste
