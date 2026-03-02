@@ -12,7 +12,56 @@ config.initial_rows = 58
 
 -- or, changing the font size and color scheme.
 config.font_size = 13
-config.color_scheme = 'AdventureTime'
+config.color_scheme = 'Argonaut'
+config.window_decorations = 'RESIZE'
+config.use_fancy_tab_bar = true
+config.window_frame = {
+  font = wezterm.font({ family = 'Helvetica', weight = 'Bold' }),
+  font_size = 14.0,
+  active_titlebar_bg = '#0d1117',
+  inactive_titlebar_bg = '#0d1117',
+}
+config.tab_max_width = 48
+
+config.colors = {
+  tab_bar = {
+    background = '#0d1117',
+    active_tab = {
+      bg_color = '#232323',
+      fg_color = '#ffffff',
+      intensity = 'Bold',
+    },
+    inactive_tab = {
+      bg_color = '#0d1117',
+      fg_color = '#6e7681',
+    },
+    inactive_tab_hover = {
+      bg_color = '#1a1a2e',
+      fg_color = '#c0c0c0',
+    },
+    new_tab = {
+      bg_color = '#0d1117',
+      fg_color = '#6e7681',
+    },
+    new_tab_hover = {
+      bg_color = '#1a1a2e',
+      fg_color = '#c0c0c0',
+    },
+  },
+}
+
+-- Tab bar padding
+wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
+  local index = tab.tab_index + 1
+  local title = tab.tab_title
+  if not title or #title == 0 then
+    title = tab.active_pane.title
+  end
+  local prefix = tostring(index) .. ': '
+  return {
+    { Text = prefix .. title },
+  }
+end)
 
 -- Mouse bindings
 config.mouse_bindings = {
