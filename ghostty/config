@@ -91,5 +91,5 @@ keybind = super+shift+e=prompt_surface_title
 # MOUSE
 ################################################################################
 
-# Right-click: copy if selection active, otherwise paste (matches WezTerm)
-right-click-action = copy-or-paste
+# Right-click pastes from clipboard. Use Cmd+C to copy.
+right-click-action = paste
