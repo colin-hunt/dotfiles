@@ -46,7 +46,7 @@ vim.keymap.set("n", "<leader>x", function()
 end, { desc = "Close buffer / next diff file" })
 
 -- Tree-sitter
-vim.keymap.set("n", "<Tab>", "za", { desc = "Toggle fold" })
+-- Folding: use default `za` to toggle
 vim.keymap.set("n", "<leader>zo", "zR", { desc = "Open all folds" })
 vim.keymap.set("n", "<leader>zc", "zM", { desc = "Close all folds" })
 vim.keymap.set("n", "]z", "zj", { desc = "Next fold" })
