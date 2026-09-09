@@ -1,3 +1,5 @@
 brew "neovim"
 brew "fzf"
+brew "ripgrep"
+brew "fd"
 cask "wezterm"
