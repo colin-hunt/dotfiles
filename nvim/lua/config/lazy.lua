@@ -32,5 +32,7 @@ require("lazy").setup({
   install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
+  -- No plugin here needs luarocks; skip hererocks bootstrap and its health error
+  rocks = { enabled = false },
 })
 
