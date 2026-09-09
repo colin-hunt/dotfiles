@@ -1,9 +1,11 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  -- Pin to master: the main branch rewrite removed nvim-treesitter.configs
+  branch = "master",
   event = { "BufReadPost", "BufNewFile" },
   build = ":TSUpdate",
   dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
+    { "nvim-treesitter/nvim-treesitter-textobjects", branch = "master" },
   },
   config = function()
     vim.filetype.add({ extension = { tsx = "typescriptreact" } })
